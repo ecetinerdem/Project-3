@@ -1,6 +1,7 @@
 package com.workintech.s19d2.service;
 
 import com.workintech.s19d2.entity.Member;
+import com.workintech.s19d2.exceptions.MemberException;
 import com.workintech.s19d2.repository.MemberRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
