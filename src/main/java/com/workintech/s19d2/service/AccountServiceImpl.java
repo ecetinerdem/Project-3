@@ -1,6 +1,7 @@
 package com.workintech.s19d2.service;
 
 import com.workintech.s19d2.entity.Account;
+import com.workintech.s19d2.exceptions.AccountException;
 import com.workintech.s19d2.repository.AccountRepository;
 import com.workintech.s19d2.repository.MemberRepository;
 import lombok.AllArgsConstructor;
