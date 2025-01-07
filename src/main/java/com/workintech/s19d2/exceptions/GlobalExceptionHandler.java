@@ -15,11 +15,15 @@ import java.time.LocalDateTime;
 public class GlobalExceptionHandler {
 
     @ExceptionHandler
-    ResponseEntity<AccountErrorResponse> handleException (AccountException accountException) {
+    ResponseEntity<AccountErrorResponse> handleException(AccountException accountException) {
         log.error("An Account error has occurred " + accountException);
         AccountErrorResponse accountErrorResponse = new AccountErrorResponse(accountException.getHttpStatus().value(), accountException.getMessage(), LocalDateTime.now());
         return new ResponseEntity<>(accountErrorResponse,accountException.getHttpStatus());
     }
 
-
+    @ExceptionHandler
+    ResponseEntity<MemberErrorResponse> handleException(MemberException memberException) {
+        log.error("A Member error has occurred ", memberException);
+        MemberErrorResponse memberErrorResponse = 
+    }
 }
