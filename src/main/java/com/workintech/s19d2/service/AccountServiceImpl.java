@@ -6,7 +6,7 @@ import com.workintech.s19d2.repository.AccountRepository;
 import com.workintech.s19d2.repository.MemberRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -36,11 +36,13 @@ public class AccountServiceImpl implements AccountService{
 
     @Override
     public Account save(Account account) {
-        return null;
+        return accountRepository.save(account);
     }
 
     @Override
     public Account delete(Long id) {
-        return null;
+        Account foundAccount = findById(id);
+        accountRepository.delete(foundAccount);
+        return foundAccount;
     }
 }
