@@ -7,11 +7,14 @@ import lombok.Data;
 import lombok.Generated;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name = "Member", schema = "fsweb")
+@Table(name = "Member", schema = "bank")
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +27,8 @@ public class Member {
 
     @Column(name = "password")
     private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "member_role", schema = "bank", joinColumns = @JoinColumn(name="member_id"), inverseJoinColumns = @JoinColumn(name="role_id"))
+    List<Role> roles = new ArrayList<>();
 }
