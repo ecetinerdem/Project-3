@@ -33,10 +33,6 @@ public class AccountServiceImpl implements AccountService{
         return accountRepository.findById(id).orElseThrow(() -> new AccountException("Account does not exist with id " + id, HttpStatus.NOT_FOUND));
     }
 
-    @Override
-    public List<Account> findByEmail(String email) {
-        return List.of();
-    }
 
     @Override
     public Account save(Account account) {

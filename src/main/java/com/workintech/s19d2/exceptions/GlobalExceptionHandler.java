@@ -21,5 +21,5 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(accountErrorResponse,accountException.getHttpStatus());
     }
 
-    
+
 }
