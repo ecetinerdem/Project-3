@@ -1,10 +1,10 @@
 package com.workintech.s19d2.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -17,8 +17,12 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class Role implements UserDetails {
-    Long id;
-    String Authority;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "authority")
+    private String Authority;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
