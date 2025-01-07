@@ -11,7 +11,7 @@ import org.springframework.security.core.GrantedAuthority;
 import java.util.List;
 
 @Entity
-@Table(name = "role", schema = "fsweb")
+@Table(name = "role", schema = "bank")
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
