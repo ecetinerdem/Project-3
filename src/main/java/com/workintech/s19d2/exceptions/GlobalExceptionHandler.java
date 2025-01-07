@@ -24,6 +24,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler
     ResponseEntity<MemberErrorResponse> handleException(MemberException memberException) {
         log.error("A Member error has occurred ", memberException);
-        MemberErrorResponse memberErrorResponse = 
+        MemberErrorResponse memberErrorResponse = new MemberErrorResponse(memberException.getHttpStatus().value(), memberException.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(memberErrorResponse, memberException.getHttpStatus());
     }
 }
