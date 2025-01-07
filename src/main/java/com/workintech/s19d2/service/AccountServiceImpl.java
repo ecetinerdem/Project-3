@@ -6,7 +6,6 @@ import com.workintech.s19d2.repository.AccountRepository;
 import com.workintech.s19d2.repository.MemberRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
