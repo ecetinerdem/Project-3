@@ -52,5 +52,16 @@ public class AuthenticationService {
         }
     }
 
+    private void addRoleUSer(List<Role> roleList) {
+        Optional<Role> roleUser = roleRepository.findByAuthority(ROLE_USER);
+        if(!roleUser.isPresent()) {
+            Role roleUserEntity = new Role();
+            roleUserEntity.setAuthority(ROLE_USER);
+            roleList.add(roleRepository.save(roleUserEntity));
+        } else {
+            roleList.add(roleUser.get());
+        }
+    }
+
 }
 
