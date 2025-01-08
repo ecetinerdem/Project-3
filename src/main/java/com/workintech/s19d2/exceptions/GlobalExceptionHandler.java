@@ -27,4 +27,11 @@ public class GlobalExceptionHandler {
         MemberErrorResponse memberErrorResponse = new MemberErrorResponse(memberException.getHttpStatus().value(), memberException.getMessage(), LocalDateTime.now());
         return new ResponseEntity<>(memberErrorResponse, memberException.getHttpStatus());
     }
+
+    @ExceptionHandler
+    ResponseEntity<MemberErrorResponse> handleException(UserException userException) {
+        log.error("An User error has occurred ", userException);
+        MemberErrorResponse memberErrorResponse = new MemberErrorResponse(userException.getHttpStatus().value(), userException.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(memberErrorResponse, userException.getHttpStatus());
+    }
 }
