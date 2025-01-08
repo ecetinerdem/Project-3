@@ -1,6 +1,7 @@
 package com.workintech.s19d2.service;
 
 import com.workintech.s19d2.entity.Member;
+import com.workintech.s19d2.entity.Role;
 import com.workintech.s19d2.exceptions.UserException;
 import com.workintech.s19d2.repository.MemberRepository;
 import com.workintech.s19d2.repository.RoleRepository;
@@ -9,6 +10,8 @@ import lombok.Data;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
@@ -26,6 +29,16 @@ public class AuthenticationService {
         if(optionalMember.isPresent()) {
             throw new UserException("User with given email already exist: " + email, HttpStatus.BAD_REQUEST);
         }
+
+        String encodedPassword = passwordEncoder.encode(password);
+        List<Role> roleList = new ArrayList<>();
+        //addRoleUser(roleList);
+        //addRoleAdmin(roleList);
+        Member member = new Member();
+        member.setEmail(email);
+        member.setPassword(encodedPassword);
+        member.setRoles(roleList);
+        return memberRepository.save(member);
     }
 
 
