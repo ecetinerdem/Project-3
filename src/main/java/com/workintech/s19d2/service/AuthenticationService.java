@@ -41,6 +41,16 @@ public class AuthenticationService {
         return memberRepository.save(member);
     }
 
+    private void addRoleAdmin(List<Role> roleList) {
+        Optional<Role> roleAdmin = roleRepository.findByAuthority(ROLE_ADMIN);
+        if(!roleAdmin.isPresent()) {
+            Role roleAdminEntity = new Role();
+            roleAdminEntity.setAuthority(ROLE_ADMIN);
+            roleList.add(roleRepository.save(roleAdminEntity));
+        } else {
+            roleList.add(roleAdmin.get());
+        }
+    }
 
 }
 
