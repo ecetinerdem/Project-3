@@ -1,6 +1,7 @@
 package com.workintech.s19d2.service;
 
 import com.workintech.s19d2.entity.Member;
+import com.workintech.s19d2.exceptions.UserException;
 import com.workintech.s19d2.repository.MemberRepository;
 import com.workintech.s19d2.repository.RoleRepository;
 import lombok.AllArgsConstructor;
@@ -23,7 +24,7 @@ public class AuthenticationService {
     public Member register(String email, String password) {
         Optional<Member> optionalMember = memberRepository.findByEmail(email);
         if(optionalMember.isPresent()) {
-            throw new DuplicateUserException("User with given email already exist: " + email, HttpStatus.BAD_REQUEST);
+            throw new UserException("User with given email already exist: " + email, HttpStatus.BAD_REQUEST);
         }
     }
 
