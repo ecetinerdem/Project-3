@@ -18,8 +18,18 @@ public class AccountController {
         return accountService.findAll();
     }
 
+    @GetMapping("/id")
+    public Account findById(@PathVariable("id") Long id){
+        return accountService.findById(id);
+    }
+
     @PostMapping
     public Account save(@RequestBody Account account) {
         return accountService.save(account);
+    }
+
+    @DeleteMapping("/id")
+    public Account delete(@PathVariable("id") Long id) {
+        return accountService.delete(id);
     }
 }
